@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+
+    <style>
+      /* Global styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #121212; /* Dark background */
+        color: #ffffff; /* White text */
+        font-family: Arial, sans-serif; /* Font style */
+        margin: 0; /* Remove default margin */
+        padding: 0; /* Remove default padding */
+        display: flex; /* Flexbox for centering */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        height: 100vh; /* Full viewport height */
+      
+      }
+
+      .login-container {
+        width: 350px;
+        background-color: #1e1e1e;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease; /* Transition for scaling */
+      }
+
+      .login-container:hover {
+        transform: scale(1.02); /* Slightly scale up on hover */
+      }
+
+      .toggle-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .toggle-btn {
+        padding: 10px 20px;
+        background-color: #ddd;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .toggle-btn:hover {
+        background-color: #ccc;
+      }
+
+      .toggle-btn.active {
+        background-color: #6200ea;
+        color: white;
+      }
+
+      .form-container {
+        display: none;
+      }
+
+      .form-container.active {
+        display: block;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      input[type="email"]:focus,
+      input[type="password"]:focus,
+      select:focus {
+        border-color: #6200ea; /* Border color on focus */
+
+        outline: none; /* Remove outline */
+      }
+
+      button {
+        width: 100%; /* Full width */
+        padding: 10px; /* Padding inside button */
+        background-color: #6200ea; /* Button background color */
+        color: #ffffff; /* Button text color */
+        border: none; /* Remove border */
+        border-radius: 4px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor on hover */
+        font-size: 16px; /* Font size */
+        transition: background-color 0.3s; /* Smooth background color transition */
+      }
+
+      button:hover {
+        background-color: #3700b3; /* Darker shade on hover */
+      }
+
+      /* Form Links Styling */
+      .form-links {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .form-links a {
+        color: #6200ea;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .form-links a:hover {
+        text-decoration: underline;
+        color: #3700b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <!-- Toggle buttons -->
+      <div class="toggle-buttons">
+        <button class="toggle-btn active" id="user-btn">User Login</button>
+        <button class="toggle-btn" id="admin-btn">Admin Login</button>
+      </div>
+
+      <!-- User Login Form -->
+      <div class="form-container" id="user-form">
+        <h2>User Login</h2>
+        <form action="UserCheckLogin" method="post">
+          <label for="user-email">Email:</label>
+          <input type="email" id="user-email" name="email" required />
+
+          <label for="user-password">Password:</label>
+          <input type="password" id="user-password" name="password" required />
+
+          <!-- An element to toggle between password visibility -->
+          <input type="checkbox" onclick="showUserPassword()" />Show Password</input>
+
+          <button type="submit">Login</button>
+
+          <!-- Additional links for user -->
+          <div class="form-links">
+            <a href="user_forget.html">Forgot Password?</a> |
+            <a href="user_registration.html">Register</a>
+          </div>
+        </form>
+      </div>
+
+      <!-- Admin Login Form -->
+      <div class="form-container" id="admin-form">
+        <h2>Admin Login</h2>
+        <form action="AdminCheckLogin" method="post">
+          <label for="admin-email">Email:</label>
+          <input type="email" id="admin-email" name="email" required />
+
+          <label for="admin-password">Password:</label>
+          <input type="password" id="admin-password" name="password" required />
+
+                    <!-- An element to toggle between password visibility -->
+                    <input type="checkbox" onclick="showAdminPassword()" />Show Password</input>
+
+          <button type="submit">Login</button>
+
+          <!-- Additional links for admin -->
+          <div class="form-links">
+            <a href="admin_forget.html">Forgot Password?</a> |
+            <a href="admin_registration.html">Register</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // JavaScript to toggle between user and admin forms
+      const userBtn = document.getElementById("user-btn");
+      const adminBtn = document.getElementById("admin-btn");
+      const userForm = document.getElementById("user-form");
+      const adminForm = document.getElementById("admin-form");
+
+      userBtn.addEventListener("click", () => {
+        userForm.classList.add("active");
+        adminForm.classList.remove("active");
+        userBtn.classList.add("active");
+        adminBtn.classList.remove("active");
+      });
+
+      adminBtn.addEventListener("click", () => {
+        adminForm.classList.add("active");
+        userForm.classList.remove("active");
+        adminBtn.classList.add("active");
+        userBtn.classList.remove("active");
+      });
+
+      // Set default view to User login
+      userForm.classList.add("active");
+
+      function showUserPassword() {
+        var x = document.getElementById("user-password");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+
+      function showAdminPassword() {
+        var x = document.getElementById("admin-password");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+
+    <style>
+      /* Basic Reset s*/
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Body Styling */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        padding: 40px;
+      }
+
+      /* Profile Container */
+      .profile-container {
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Profile Header */
+      .profile-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .profile-header h1 {
+        font-size: 28px;
+        color: #333;
+      }
+
+      /* Profile Content */
+      .profile-content {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      /* Profile Info Section */
+      .profile-info {
+        display: flex;
+        align-items: center;
+      }
+
+      .profile-img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin-right: 20px;
+      }
+
+      .info p {
+        font-size: 16px;
+        color: #555;
+        margin: 8px 0;
+      }
+
+      .info p strong {
+        color: #333;
+      }
+
+      /* Log-Out Button */
+      .logout {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .logout button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .logout button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Profile Section -->
+    <div class="profile-container">
+      <div class="profile-header">
+        <h1>User Profile</h1>
+      </div>
+
+      <div class="profile-content">
+        <!-- Profile Picture and Info -->
+        <div class="profile-info">
+          <img
+            src="https://via.placeholder.com/150"
+            alt="Profile Picture"
+            class="profile-img"
+          />
+          <div class="info">
+            <p><strong>Name:</strong> </p>
+            <p><strong>Email:</strong> </p>
+            <p><strong>Role:</strong> </p>
+          </div>
+        </div>
+
+        <!-- Log-Out Button -->
+        <div class="logout">
+          <button onclick="window.location.href='Logout'">Log Out</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

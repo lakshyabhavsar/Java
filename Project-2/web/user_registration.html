@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #121212; /* Dark background */
+        color: #ffffff; /* White text */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .registration-container {
+        background-color: #1e1e1e;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease; /* Transition for scaling */
+        width: 400px;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .registration-container:hover {
+        transform: scale(1.02); /* Slightly scale up on hover */
+      }
+      
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      button {
+        width: 100%; /* Full width */
+        padding: 10px; /* Padding inside button */
+        background-color: #6200ea; /* Button background color */
+        color: #ffffff; /* Button text color */
+        border: none; /* Remove border */
+        border-radius: 4px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor on hover */
+        font-size: 16px; /* Font size */
+        transition: background-color 0.3s; /* Smooth background color transition */
+      }
+
+      button:hover {
+        background-color: #3700b3; /* Darker shade on hover */
+      }
+
+      /* Responsive Design */
+      @media (max-width: 500px) {
+        .registration-container {
+          width: 90%;
+          padding: 20px;
+        }
+
+        h2 {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="registration-container">
+      <h2>User Registration</h2>
+      <form action="User_Registration" method="post" class="registration-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="mobile">Mobile Number:</label>
+        <input
+          type="tel"
+          id="mobile"
+          name="mobile"
+          required
+          pattern="[0-9]{10}"
+          placeholder="Enter 10 digit mobile number"
+        />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+
+        <label for="confirm-password">Confirm Password:</label>
+        <input
+          type="password"
+          id="confirm-password"
+          name="confirm-password"
+          required
+        />
+
+        <button type="submit" onclick="return check()">Register</button>
+      </form>
+    </div>
+
+    <script>
+      function check() {
+        pwd = document.getElementById("password").value;
+        pwd2 = document.getElementById("confirm-password").value;
+
+        if (pwd === pwd2) {
+          return true;
+        } else {
+          window.alert("password or confirm password not match");
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>
