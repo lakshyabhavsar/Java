@@ -46,7 +46,6 @@
                         Statement smt = cn.createStatement();
                         
                         ResultSet rs = smt.executeQuery("select * from Song_Details where Name like'"+name+"%'");
-
                         while (rs.next()) {
                             String id = rs.getString("ID");
                             String songName = rs.getString("Name");
